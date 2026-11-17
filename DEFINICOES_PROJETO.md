@@ -8,7 +8,7 @@ Este documento consolida o contexto institucional, textos oficiais, regras de ne
 
 - **Nome:** T&J Trabalhos Acadêmicos
 - **Slogan / Assinatura:** Organização, conhecimento e cuidado em cada projeto.
-- **Fundadores:** Casal de estudantes da área da saúde (Thiago Ferreira Gonçalves — Medicina & Jordana Silva Moreira — Cirurgiã-Dentista / Odontologia), unindo amor e paixão pelo conhecimento desde o final de 2024.
+- **Fundadores:** Casal de estudantes da área da saúde (Tiago Ferreira Gonçalves — Medicina & Jordana Silva Moreira — Cirurgiã-Dentista / Odontologia), unindo amor e paixão pelo conhecimento desde o final de 2024.
 - **Contato / Chave PIX Oficial:** `62999715309` — Favorecido: Jordana Silva Moreira (WhatsApp: `(62) 99971-5309`).
 - **Assets Oficiais no Repositório:**
   - `assets/logo-tej.jpg`: Logotipo oficial (livro aberto + cérebro conectado + tipografia serifada T&J com pena + capelo).
