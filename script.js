@@ -1,14 +1,12 @@
 /**
- * T&J Trabalhos Acadêmicos — Interações, Coreografia e Jornada de Orçamento
+ * T&J Trabalhos Acadêmicos — Background de Constelação Neural, Coreografia e Contato
  */
 (function () {
   'use strict';
 
-  // Ativa classe de aprimoramento progressivo para animações
   document.documentElement.classList.add('js-ready');
 
   const WHATSAPP_NUMBER = '5562999715309';
-  const PIX_KEY = '62999715309';
 
   // 1. Ano atual no rodapé
   const yearEl = document.getElementById('currentYear');
@@ -16,7 +14,114 @@
     yearEl.textContent = String(new Date().getFullYear());
   }
 
-  // 2. Barra de progresso de leitura e estado do cabeçalho
+  // 2. Background Temático: Constelação de Conhecimento (Inspirado nas conexões neurais da Logo T&J)
+  const canvas = document.getElementById('neuralCanvas');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (canvas && canvas.getContext) {
+    const ctx = canvas.getContext('2d');
+    let width = 0;
+    let height = 0;
+    let nodes = [];
+    const pointer = { x: -9999, y: -9999 };
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = rect.width;
+      height = rect.height;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = Math.max(18, Math.min(44, Math.floor((width * height) / 26000)));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: 1.8 + Math.random() * 2.2
+      }));
+    }
+
+    function drawFrame() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        if (!prefersReducedMotion) {
+          a.x += a.vx;
+          a.y += a.vy;
+          if (a.x < 0 || a.x > width) a.vx *= -1;
+          if (a.y < 0 || a.y > height) a.vy *= -1;
+        }
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.hypot(dx, dy);
+          const maxDist = 155;
+
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * 0.22;
+            ctx.strokeStyle = `rgba(22, 91, 49, ${alpha.toFixed(3)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+
+        // Conexão sutil com o cursor
+        const pdx = a.x - pointer.x;
+        const pdy = a.y - pointer.y;
+        const pDist = Math.hypot(pdx, pdy);
+        if (pDist < 180) {
+          const pAlpha = (1 - pDist / 180) * 0.32;
+          ctx.strokeStyle = `rgba(62, 123, 59, ${pAlpha.toFixed(3)})`;
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(pointer.x, pointer.y);
+          ctx.stroke();
+        }
+
+        ctx.fillStyle = 'rgba(22, 91, 49, 0.38)';
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (!prefersReducedMotion) {
+        requestAnimationFrame(drawFrame);
+      }
+    }
+
+    resizeCanvas();
+    drawFrame();
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      if (prefersReducedMotion) drawFrame();
+    });
+
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+      heroSection.addEventListener('pointermove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = e.clientX - rect.left;
+        pointer.y = e.clientY - rect.top;
+      });
+      heroSection.addEventListener('pointerleave', () => {
+        pointer.x = -9999;
+        pointer.y = -9999;
+      });
+    }
+  }
+
+  // 3. Barra de progresso de leitura e estado do cabeçalho
   const header = document.querySelector('.site-header');
   const scrollProgress = document.getElementById('scrollProgress');
 
@@ -34,7 +139,7 @@
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
-  // 3. Menu Mobile Acessível
+  // 4. Menu Mobile Acessível
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.getElementById('mainNav');
 
@@ -68,7 +173,7 @@
     });
   }
 
-  // 4. Coreografia de Entrada por Grupos (IntersectionObserver)
+  // 5. Coreografia de Entrada por Grupos (IntersectionObserver)
   const revealElements = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && revealElements.length > 0) {
     const revealObserver = new IntersectionObserver(
@@ -88,28 +193,7 @@
     revealElements.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // 5. Inspecionador de Padrão Acadêmico na Hero (Tabs)
-  const switchBtns = document.querySelectorAll('.switch-btn');
-  const panelRascunho = document.getElementById('panel-rascunho');
-  const panelPadrao = document.getElementById('panel-padrao');
-
-  switchBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const targetView = btn.getAttribute('data-view');
-      switchBtns.forEach((b) => {
-        const active = b === btn;
-        b.classList.toggle('is-active', active);
-        b.setAttribute('aria-selected', String(active));
-      });
-
-      if (panelRascunho && panelPadrao) {
-        panelRascunho.classList.toggle('is-hidden', targetView !== 'rascunho');
-        panelPadrao.classList.toggle('is-hidden', targetView !== 'padrao');
-      }
-    });
-  });
-
-  // 6. Filtro Funcional de Serviços + Seleção Direta para o Orçamento
+  // 6. Filtro Funcional de Serviços + Seleção Direta
   const filterBtns = document.querySelectorAll('.filter-btn');
   const serviceCards = document.querySelectorAll('.service-card');
 
@@ -141,7 +225,6 @@
       const serviceValue = btn.getAttribute('data-select-service');
       if (serviceTypeSelect && serviceValue) {
         serviceTypeSelect.value = serviceValue;
-        serviceTypeSelect.dispatchEvent(new Event('change'));
       }
       if (quoteSection) {
         quoteSection.scrollIntoView({ behavior: 'smooth' });
@@ -152,175 +235,33 @@
     });
   });
 
-  // 7. Utilitário de Cópia para Área de Transferência (PIX e Resumo)
-  function copyTextToClipboard(text, onSuccess) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(onSuccess).catch(() => fallbackCopy(text, onSuccess));
-    } else {
-      fallbackCopy(text, onSuccess);
-    }
-  }
-
-  function fallbackCopy(text, onSuccess) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.setAttribute('readonly', '');
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      document.execCommand('copy');
-      onSuccess();
-    } catch (_) {
-      // Silencioso se não suportado
-    }
-    document.body.removeChild(textarea);
-  }
-
-  const copyPixBtn = document.getElementById('copyPixBtn');
-  const copyPixText = document.getElementById('copyPixText');
-  const modalCopyPixBtn = document.getElementById('modalCopyPixBtn');
-
-  if (copyPixBtn && copyPixText) {
-    copyPixBtn.addEventListener('click', () => {
-      copyTextToClipboard(PIX_KEY, () => {
-        const original = copyPixText.textContent;
-        copyPixText.textContent = 'Chave PIX Copiada! ✓';
-        setTimeout(() => {
-          copyPixText.textContent = original;
-        }, 2500);
-      });
-    });
-  }
-
-  if (modalCopyPixBtn) {
-    modalCopyPixBtn.addEventListener('click', () => {
-      copyTextToClipboard(PIX_KEY, () => {
-        const original = modalCopyPixBtn.textContent;
-        modalCopyPixBtn.textContent = 'PIX Copiado! ✓';
-        setTimeout(() => {
-          modalCopyPixBtn.textContent = original;
-        }, 2500);
-      });
-    });
-  }
-
-  // 8. Modal de Termos e Condições do Serviço
-  const termsModal = document.getElementById('termsModal');
-  const openTermsModalBtn = document.getElementById('openTermsModalBtn');
-  const footerTermsBtn = document.getElementById('footerTermsBtn');
-  const closeTermsModalBtn = document.getElementById('closeTermsModalBtn');
-  const acceptTermsBtn = document.getElementById('acceptTermsBtn');
-  let lastFocusedElement = null;
-
-  function openTermsModal() {
-    if (!termsModal) return;
-    lastFocusedElement = document.activeElement;
-    termsModal.hidden = false;
-    document.body.style.overflow = 'hidden';
-    if (closeTermsModalBtn) {
-      closeTermsModalBtn.focus();
-    }
-  }
-
-  function closeTermsModal() {
-    if (!termsModal) return;
-    termsModal.hidden = true;
-    document.body.style.overflow = '';
-    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-      lastFocusedElement.focus();
-    }
-  }
-
-  if (openTermsModalBtn) openTermsModalBtn.addEventListener('click', openTermsModal);
-  if (footerTermsBtn) footerTermsBtn.addEventListener('click', openTermsModal);
-  if (closeTermsModalBtn) closeTermsModalBtn.addEventListener('click', closeTermsModal);
-  if (acceptTermsBtn) acceptTermsBtn.addEventListener('click', closeTermsModal);
-
-  if (termsModal) {
-    termsModal.addEventListener('click', (e) => {
-      if (e.target === termsModal) {
-        closeTermsModal();
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !termsModal.hidden) {
-        closeTermsModal();
-      }
-    });
-  }
-
-  // 9. Estruturador de Orçamento Acadêmico em Tempo Real
+  // 7. Envio Direto para o WhatsApp
   const quoteForm = document.getElementById('academicQuoteForm');
   const courseAreaInput = document.getElementById('courseArea');
-  const normStandardSelect = document.getElementById('normStandard');
-  const projectStageSelect = document.getElementById('projectStage');
   const deadlineInfoInput = document.getElementById('deadlineInfo');
   const projectDetailsInput = document.getElementById('projectDetails');
-  const liveMessagePreview = document.getElementById('liveMessagePreview');
-  const copySummaryBtn = document.getElementById('copySummaryBtn');
 
   function buildWhatsAppMessage() {
     const name = studentNameInput ? studentNameInput.value.trim() : '';
     const course = courseAreaInput ? courseAreaInput.value.trim() : '';
     const service = serviceTypeSelect ? serviceTypeSelect.value : '';
-    const norm = normStandardSelect ? normStandardSelect.value : 'ABNT';
-    const stage = projectStageSelect ? projectStageSelect.value : '';
     const deadline = deadlineInfoInput ? deadlineInfoInput.value.trim() : '';
     const details = projectDetailsInput ? projectDetailsInput.value.trim() : '';
 
     const lines = [
       'Olá, equipe T&J Trabalhos Acadêmicos! Tudo bem?',
-      'Gostaria de solicitar um orçamento para meu projeto:'
+      'Gostaria de conversar sobre meu projeto acadêmico:'
     ];
 
     if (name) lines.push(`• *Nome:* ${name}`);
     if (course) lines.push(`• *Curso/Área:* ${course}`);
     if (service) lines.push(`• *Demanda:* ${service}`);
-    if (norm) lines.push(`• *Norma/Diretriz:* ${norm}`);
-    if (stage) lines.push(`• *Etapa atual:* ${stage}`);
-    if (deadline) lines.push(`• *Prazo estimado:* ${deadline}`);
-    if (details) lines.push(`• *Observações/Tema:* ${details}`);
+    if (deadline) lines.push(`• *Prazo/Etapa:* ${deadline}`);
+    if (details) lines.push(`• *Sobre o projeto:* ${details}`);
 
     return lines.join('\n');
   }
 
-  function updatePreview() {
-    if (!liveMessagePreview) return;
-    liveMessagePreview.textContent = buildWhatsAppMessage();
-  }
-
-  [
-    studentNameInput,
-    courseAreaInput,
-    serviceTypeSelect,
-    normStandardSelect,
-    projectStageSelect,
-    deadlineInfoInput,
-    projectDetailsInput
-  ].forEach((input) => {
-    if (!input) return;
-    input.addEventListener('input', updatePreview);
-    input.addEventListener('change', updatePreview);
-  });
-
-  updatePreview();
-
-  if (copySummaryBtn) {
-    copySummaryBtn.addEventListener('click', () => {
-      copyTextToClipboard(buildWhatsAppMessage(), () => {
-        const original = copySummaryBtn.textContent;
-        copySummaryBtn.textContent = 'Resumo copiado! ✓';
-        setTimeout(() => {
-          copySummaryBtn.textContent = original;
-        }, 2200);
-      });
-    });
-  }
-
-  // Validação acessível e envio via WhatsApp
   if (quoteForm) {
     quoteForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -344,7 +285,7 @@
 
       if (courseAreaInput && !courseAreaInput.value.trim()) {
         courseAreaInput.setAttribute('aria-invalid', 'true');
-        if (errorCourse) errorCourse.textContent = 'Informe seu curso ou área acadêmica.';
+        if (errorCourse) errorCourse.textContent = 'Informe seu curso ou área.';
         isValid = false;
         firstInvalid = firstInvalid || courseAreaInput;
       } else if (courseAreaInput) {
@@ -354,7 +295,7 @@
 
       if (serviceTypeSelect && !serviceTypeSelect.value) {
         serviceTypeSelect.setAttribute('aria-invalid', 'true');
-        if (errorService) errorService.textContent = 'Selecione o tipo de demanda acadêmica.';
+        if (errorService) errorService.textContent = 'Selecione a demanda acadêmica.';
         isValid = false;
         firstInvalid = firstInvalid || serviceTypeSelect;
       } else if (serviceTypeSelect) {

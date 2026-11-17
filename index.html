@@ -16,11 +16,13 @@
   <!-- Barra de progresso de leitura sutil -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <!-- Cabeçalho Editorial -->
+  <!-- Cabeçalho Minimalista com Logo em Destaque -->
   <header class="site-header" id="topo">
     <div class="container header-inner">
       <a href="#topo" class="brand-link" aria-label="T&J Trabalhos Acadêmicos - Início">
-        <img src="assets/logo-tej.jpg" alt="Logo T&J Trabalhos Acadêmicos" class="brand-logo" width="52" height="52" />
+        <div class="brand-logo-wrap">
+          <img src="assets/logo-tej.jpg" alt="Logo T&J Trabalhos Acadêmicos" class="brand-logo" width="64" height="64" />
+        </div>
         <div class="brand-text">
           <span class="brand-name">T&amp;J</span>
           <span class="brand-subtitle">Trabalhos Acadêmicos</span>
@@ -35,142 +37,87 @@
 
       <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
         <ul class="nav-list">
-          <li><a href="#servicos" class="nav-link">Serviços</a></li>
-          <li><a href="#compromisso" class="nav-link">Nosso Compromisso</a></li>
+          <li><a href="#servicos" class="nav-link">Demandas</a></li>
+          <li><a href="#compromisso" class="nav-link">Compromisso</a></li>
           <li><a href="#historia" class="nav-link">Nossa História</a></li>
-          <li><a href="#transparencia" class="nav-link">Como Funciona &amp; Termos</a></li>
         </ul>
         <div class="nav-actions">
-          <a href="#orcamento" class="btn btn-primary btn-sm">Solicitar Orçamento</a>
+          <a href="#orcamento" class="btn btn-primary btn-sm">Falar Conosco</a>
         </div>
       </nav>
     </div>
   </header>
 
   <main id="conteudo-principal">
-    <!-- HERO: Proposta de Valor + Demonstrador Interativo de Padrão Acadêmico -->
+    <!-- HERO MINIMALISTA: Background Estiloso do Tema + Logo Protagonista -->
     <section class="hero-section">
-      <div class="hero-ambient" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <div class="hero-copy" data-reveal="group">
-          <div class="eyebrow-badge">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span>Desde 2024 • Suporte Acadêmico Individualizado</span>
+      <!-- Background estiloso: malha acadêmica + constelação neural interativa + órbitas -->
+      <div class="hero-backdrop" aria-hidden="true">
+        <canvas id="neuralCanvas" class="neural-canvas"></canvas>
+        <div class="hero-grid-lines"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+      </div>
+
+      <div class="container hero-minimal">
+        <!-- Emblema Central com a Logo T&J em Grande Destaque -->
+        <div class="hero-emblem-stage" data-reveal="panel">
+          <div class="emblem-orbit emblem-orbit-outer" aria-hidden="true"></div>
+          <div class="emblem-orbit emblem-orbit-inner" aria-hidden="true"></div>
+          <div class="hero-logo-pedestal">
+            <img
+              src="assets/logo-tej.jpg"
+              alt="T&J Trabalhos Acadêmicos — Conhecimento, Ciência e Dedicação"
+              class="hero-main-logo"
+              width="220"
+              height="220"
+            />
           </div>
+        </div>
+
+        <!-- Texto Minimalista e Direto -->
+        <div class="hero-copy-minimal" data-reveal="group">
+          <span class="eyebrow-pill">Excelência &amp; Rigor Científico</span>
 
           <h1 class="hero-title">
-            Transformamos suas ideias em <span class="serif-italic">trabalhos acadêmicos</span> estruturados com rigor e cuidado.
+            Transformamos suas ideias em <span class="serif-italic">trabalhos acadêmicos</span> de excelência.
           </h1>
 
           <p class="hero-lead">
-            Ajudamos estudantes e profissionais a tirarem seus projetos do papel com organização, clareza textual, adequação às normas da ABNT e respeito à integridade científica.
+            Cuidado em cada detalhe, respeito à individualidade do seu projeto e adequação rigorosa às normas científicas.
           </p>
 
           <div class="hero-cta-group">
             <a href="#orcamento" class="btn btn-primary btn-lg">
-              <span>Estruturar meu pedido</span>
+              <span>Conversar sobre meu projeto</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="#historia" class="btn btn-secondary btn-lg">Conhecer nossa história</a>
-          </div>
-
-          <dl class="hero-pillars" aria-label="Diferenciais de atendimento">
-            <div class="pillar-item">
-              <dt>Normas &amp; Rigor</dt>
-              <dd>ABNT e diretrizes institucionais</dd>
-            </div>
-            <div class="pillar-item">
-              <dt>Acompanhamento</dt>
-              <dd>Ajustes do orientador incluídos*</dd>
-            </div>
-            <div class="pillar-item">
-              <dt>Pagamento Claro</dt>
-              <dd>50% no início • 50% na entrega</dd>
-            </div>
-          </dl>
-        </div>
-
-        <!-- Assinatura Visual: Inspecionador de Padrão Científico T&J -->
-        <div class="hero-showcase" data-reveal="panel">
-          <div class="paper-inspector" aria-label="Demonstração de padronização acadêmica">
-            <div class="inspector-header">
-              <div class="inspector-title-group">
-                <span class="inspector-tag">Demonstração de Cuidado</span>
-                <h2 class="inspector-heading">Da ideia inicial ao padrão acadêmico</h2>
-              </div>
-              <div class="view-switch" role="tablist" aria-label="Alternar visualização do documento">
-                <button type="button" role="tab" aria-selected="false" aria-controls="panel-rascunho" id="tab-rascunho" class="switch-btn" data-view="rascunho">
-                  Ideia Bruta
-                </button>
-                <button type="button" role="tab" aria-selected="true" aria-controls="panel-padrao" id="tab-padrao" class="switch-btn is-active" data-view="padrao">
-                  Padrão T&amp;J
-                </button>
-              </div>
-            </div>
-
-            <!-- Visão 1: Ideia Bruta -->
-            <div id="panel-rascunho" role="tabpanel" aria-labelledby="tab-rascunho" class="document-preview is-hidden">
-              <div class="doc-meta doc-meta-warning">
-                <span>Rascunho sem padronização</span>
-                <span>Pendências de estrutura e norma</span>
-              </div>
-              <div class="doc-sheet raw-sheet">
-                <p class="raw-note">“Preciso falar sobre a importância da prevenção na saúde bucal e sistêmica no meu TCC, mas ainda não sei organizar os objetivos, a metodologia de revisão e as referências todas estão em formatos diferentes...”</p>
-                <ul class="raw-issues">
-                  <li>Falta delimitação entre objetivo geral e específicos</li>
-                  <li>Citações sem padronização NBR 10520 / ABNT</li>
-                  <li>Ausência de fluidez e encadeamento metodológico</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Visão 2: Padrão T&J -->
-            <div id="panel-padrao" role="tabpanel" aria-labelledby="tab-padrao" class="document-preview">
-              <div class="doc-meta doc-meta-ready">
-                <span>NBR 14724 / NBR 6023 • Revisado</span>
-                <span>Integridade Científica Verificada</span>
-              </div>
-              <div class="doc-sheet formatted-sheet">
-                <div class="abnt-header">
-                  <span>1 INTRODUÇÃO E JUSTIFICATIVA</span>
-                  <span class="abnt-page">p. 14</span>
-                </div>
-                <p class="abnt-paragraph">
-                  A integração entre a atenção odontológica e o acompanhamento médico multiprofissional constitui eixo determinante na prevenção de agravos sistêmicos. Conforme evidenciado na literatura recente, a padronização de protocolos clínicos amplia a eficácia diagnóstica e a segurança do paciente <span class="citation-pill" title="Citação padronizada e conferida na lista de referências">(SILVA; GONÇALVES, 2024)</span>.
-                </p>
-                <div class="abnt-Annotations">
-                  <span class="annotation-chip">✓ Recuo 1,25 cm e espaçamento 1,5</span>
-                  <span class="annotation-chip">✓ Revisão ortográfica e coesão</span>
-                  <span class="annotation-chip">✓ Referências verificadas</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="inspector-footer">
-              <div class="brand-seal">
-                <img src="assets/logo-tej.jpg" alt="" width="28" height="28" />
-                <span>Cada trabalho respeita a individualidade do seu projeto e da sua instituição.</span>
-              </div>
-            </div>
+            <a href="#servicos" class="btn btn-secondary btn-lg">Explorar demandas</a>
           </div>
         </div>
+
+        <!-- Indicador sutil de rolagem -->
+        <a href="#servicos" class="scroll-cue" aria-label="Rolar para conhecer os serviços">
+          <span class="scroll-cue-line"></span>
+          <span class="scroll-cue-text">Descubra</span>
+        </a>
       </div>
     </section>
 
-    <!-- SEÇÃO: SERVIÇOS ACADÊMICOS COM FILTRO INTERATIVO -->
+    <!-- SEÇÃO: SERVIÇOS ACADÊMICOS (Visual Limpo e Minimalista) -->
     <section class="services-section section-spacing" id="servicos">
       <div class="container">
-        <div class="section-header" data-reveal="group">
-          <span class="section-kicker">Demandas Acadêmicas</span>
-          <h2 class="section-title">Suporte completo para cada etapa da sua jornada</h2>
+        <div class="section-header section-header-centered" data-reveal="group">
+          <span class="section-kicker">O Que Fazemos</span>
+          <h2 class="section-title">Suporte especializado para cada etapa acadêmica</h2>
           <p class="section-description">
-            Trabalhamos com diferentes demandas acadêmicas, oferecendo suporte na elaboração, organização, formatação e desenvolvimento. Selecione uma categoria ou escolha o serviço para iniciar seu orçamento.
+            Elaboração, organização, formatação e desenvolvimento com rigor metodológico e clareza.
           </p>
         </div>
 
-        <!-- Filtros Funcionais -->
+        <!-- Filtros Minimalistas -->
         <div class="filter-bar" role="toolbar" aria-label="Filtrar serviços acadêmicos" data-reveal="group">
-          <button type="button" class="filter-btn is-active" data-filter="todos" aria-pressed="true">Todos os serviços (7)</button>
+          <button type="button" class="filter-btn is-active" data-filter="todos" aria-pressed="true">Todas</button>
           <button type="button" class="filter-btn" data-filter="pesquisa" aria-pressed="false">TCC, Monografia &amp; Projetos</button>
           <button type="button" class="filter-btn" data-filter="publicacao" aria-pressed="false">Artigos &amp; Resumos</button>
           <button type="button" class="filter-btn" data-filter="apresentacao" aria-pressed="false">Banners &amp; Apresentações</button>
@@ -179,148 +126,113 @@
 
         <div class="services-grid" id="servicesGrid" aria-live="polite">
           <!-- Card 1 -->
-          <article class="service-card" data-category="pesquisa" data-service-name="TCC e Monografia">
+          <article class="service-card" data-category="pesquisa">
             <div class="service-card-top">
               <span class="service-category-tag">Conclusão de Curso</span>
               <span class="service-number">01</span>
             </div>
             <h3 class="service-title">TCCs e Monografias</h3>
             <p class="service-desc">
-              Suporte completo no desenvolvimento, organização de capítulos, fundamentação teórica, metodologia e discussão dos resultados, respeitando o cronograma junto ao seu orientador.
+              Suporte completo na estruturação de capítulos, fundamentação teórica, metodologia e discussão dos resultados, com acompanhamento até a versão final.
             </p>
-            <ul class="service-Check-list">
-              <li>Estruturação lógica de capítulos</li>
-              <li>Fundamentação em bases científicas confiáveis</li>
-              <li>Ajustes solicitados pelo orientador incluídos</li>
-            </ul>
             <button type="button" class="btn-service-select" data-select-service="TCC / Monografia">
-              <span>Solicitar suporte para TCC</span>
+              <span>Selecionar demanda</span>
               <span aria-hidden="true">→</span>
             </button>
           </article>
 
           <!-- Card 2 -->
-          <article class="service-card" data-category="pesquisa" data-service-name="Projeto de Pesquisa">
+          <article class="service-card" data-category="pesquisa">
             <div class="service-card-top">
               <span class="service-category-tag">Planejamento Científico</span>
               <span class="service-number">02</span>
             </div>
             <h3 class="service-title">Projetos de Pesquisa</h3>
             <p class="service-desc">
-              Tiramos sua ideia do papel com delimitação clara do tema, pergunta norteadora, hipótese, objetivos geral e específicos, justificativa, metodologia e cronograma.
+              Delimitação clara do tema, pergunta norteadora, objetivos geral e específicos, justificativa, metodologia e cronograma estruturados.
             </p>
-            <ul class="service-Check-list">
-              <li>Delimitação clara do problema de pesquisa</li>
-              <li>Alinhamento metodológico coerente</li>
-              <li>Adequação ao edital ou manual da instituição</li>
-            </ul>
             <button type="button" class="btn-service-select" data-select-service="Projeto de Pesquisa">
-              <span>Solicitar Projeto de Pesquisa</span>
+              <span>Selecionar demanda</span>
               <span aria-hidden="true">→</span>
             </button>
           </article>
 
           <!-- Card 3 -->
-          <article class="service-card" data-category="publicacao" data-service-name="Artigo Científico">
+          <article class="service-card" data-category="publicacao">
             <div class="service-card-top">
               <span class="service-category-tag">Publicação &amp; Periódicos</span>
               <span class="service-number">03</span>
             </div>
             <h3 class="service-title">Artigos Científicos</h3>
             <p class="service-desc">
-              Elaboração, desenvolvimento e organização de artigos originais, revisões de literatura (narrativa, integrativa ou sistemática) e relatos de caso com rigor metodológico.
+              Desenvolvimento e organização de artigos originais, revisões de literatura e relatos de caso com fontes confiáveis e rigor científico.
             </p>
-            <ul class="service-Check-list">
-              <li>Resumo estruturado e palavras-chave (DeCS/MeSH)</li>
-              <li>Cuidado rigoroso com citações e referências</li>
-              <li>Formatação conforme diretrizes da revista ou curso</li>
-            </ul>
             <button type="button" class="btn-service-select" data-select-service="Artigo Científico">
-              <span>Solicitar Artigo Científico</span>
+              <span>Selecionar demanda</span>
               <span aria-hidden="true">→</span>
             </button>
           </article>
 
           <!-- Card 4 -->
-          <article class="service-card" data-category="publicacao" data-service-name="Resumos Acadêmicos">
+          <article class="service-card" data-category="publicacao">
             <div class="service-card-top">
               <span class="service-category-tag">Congressos &amp; Eventos</span>
               <span class="service-number">04</span>
             </div>
             <h3 class="service-title">Resumos Simples e Expandidos</h3>
             <p class="service-desc">
-              Síntese precisa e objetiva para submissão em congressos, jornadas acadêmicas, simpósios e mostras científicas, respeitando rigorosamente o limite de palavras ou caracteres do edital.
+              Síntese precisa e objetiva para submissão em congressos, jornadas acadêmicas, simpósios e mostras científicas conforme o edital.
             </p>
-            <ul class="service-Check-list">
-              <li>Clareza de introdução, métodos, resultados e conclusão</li>
-              <li>Obediência estrita às regras de submissão do evento</li>
-              <li>Padronização textual e revisão ortográfica</li>
-            </ul>
             <button type="button" class="btn-service-select" data-select-service="Resumo Simples ou Expandido">
-              <span>Solicitar Resumo para Evento</span>
+              <span>Selecionar demanda</span>
               <span aria-hidden="true">→</span>
             </button>
           </article>
 
           <!-- Card 5 -->
-          <article class="service-card" data-category="apresentacao" data-service-name="Banners e Pôsteres">
+          <article class="service-card" data-category="apresentacao">
             <div class="service-card-top">
               <span class="service-category-tag">Exposição Visual</span>
               <span class="service-number">05</span>
             </div>
             <h3 class="service-title">Banners Científicos</h3>
             <p class="service-desc">
-              Organização visual e diagramação de banners e e-pôsteres para congressos e apresentações acadêmicas, garantindo leitura hierárquica, estética limpa e fidelidade às normas do evento.
+              Diagramação limpa e hierárquica de banners e e-pôsteres para eventos científicos, equilibrando texto, resultados e elementos visuais.
             </p>
-            <ul class="service-Check-list">
-              <li>Hierarquia visual clara à distância</li>
-              <li>Distribuição equilibrada de texto, tabelas e figuras</li>
-              <li>Arquivo pronto para impressão ou exibição digital</li>
-            </ul>
             <button type="button" class="btn-service-select" data-select-service="Banner / Pôster Científico">
-              <span>Solicitar Banner Científico</span>
+              <span>Selecionar demanda</span>
               <span aria-hidden="true">→</span>
             </button>
           </article>
 
           <!-- Card 6 -->
-          <article class="service-card" data-category="apresentacao" data-service-name="Apresentações e Slides">
+          <article class="service-card" data-category="apresentacao">
             <div class="service-card-top">
-              <span class="service-category-tag">Defesa &amp; Seminários</span>
+              <span class="service-category-tag">Defesa &amp; Banca</span>
               <span class="service-number">06</span>
             </div>
             <h3 class="service-title">Apresentações e Slides</h3>
             <p class="service-desc">
-              Construção de apresentações elegantes e didáticas para defesas de TCC, qualificações, seminários e aulas, destacando os pontos essenciais sem poluição visual.
+              Roteiro visual elegante e didático para defesas de TCC, qualificações, seminários e aulas, destacando o essencial com clareza.
             </p>
-            <ul class="service-Check-list">
-              <li>Roteiro pensado para o tempo da sua banca</li>
-              <li>Síntese visual que apoia a fala do apresentador</li>
-              <li>Identidade sóbria e acadêmica</li>
-            </ul>
             <button type="button" class="btn-service-select" data-select-service="Apresentação / Slides">
-              <span>Solicitar Apresentação em Slides</span>
+              <span>Selecionar demanda</span>
               <span aria-hidden="true">→</span>
             </button>
           </article>
 
           <!-- Card 7 -->
-          <article class="service-card service-card-wide" data-category="normas" data-service-name="Formatação e Revisão">
+          <article class="service-card service-card-wide" data-category="normas">
             <div class="service-card-top">
               <span class="service-category-tag">Padronização &amp; Normas</span>
               <span class="service-number">07</span>
             </div>
             <h3 class="service-title">Formatação ABNT, Revisão Textual e Outras Demandas</h3>
             <p class="service-desc">
-              Já escreveu seu trabalho e precisa deixá-lo impecável para a entrega? Realizamos a adequação completa às normas da ABNT, Vancouver ou manual próprio da sua faculdade, além de revisão ortográfica, sumário automático, listas e conferência de referências.
+              Adequação completa às normas da ABNT e diretrizes da sua instituição, revisão ortográfica, padronização textual, sumários automáticos e conferência rigorosa de referências bibliográficas.
             </p>
-            <ul class="service-Check-list">
-              <li>Adequação completa à ABNT e diretrizes institucionais</li>
-              <li>Revisão ortográfica, gramatical e padronização textual</li>
-              <li>Conferência cruzada de citações e referências bibliográficas</li>
-            </ul>
             <button type="button" class="btn-service-select" data-select-service="Formatação ABNT e Revisão Textual">
-              <span>Solicitar Formatação / Revisão</span>
+              <span>Selecionar demanda</span>
               <span aria-hidden="true">→</span>
             </button>
           </article>
@@ -339,7 +251,7 @@
               Mais do que entregar um trabalho, buscamos oferecer cuidado em cada detalhe, respeitando a individualidade de cada projeto e valorizando o conhecimento científico.
             </p>
             <div class="commitment-quote-box">
-              <p>“Independentemente do serviço contratado, prezamos por cinco pilares inegociáveis que garantem a qualidade e a tranquilidade da sua entrega.”</p>
+              <p>Independentemente do serviço contratado, prezamos por princípios inegociáveis de organização, ética acadêmica e acompanhamento próximo.</p>
             </div>
           </div>
 
@@ -348,35 +260,35 @@
               <span class="commitment-index" aria-hidden="true">01</span>
               <div class="commitment-body">
                 <h3>Organização e clareza na apresentação das informações</h3>
-                <p>Estruturamos cada seção com encadeamento lógico, facilitando a leitura da banca avaliadora e a compreensão imediata dos seus argumentos e resultados.</p>
+                <p>Estruturação lógica e fluida para que cada etapa do seu raciocínio seja compreendida com clareza.</p>
               </div>
             </li>
             <li class="commitment-item">
               <span class="commitment-index" aria-hidden="true">02</span>
               <div class="commitment-body">
                 <h3>Adequação às normas acadêmicas, como ABNT e diretrizes institucionais</h3>
-                <p>Seguimos rigorosamente as normas da ABNT, estilo Vancouver ou o manual específico da sua universidade para margens, títulos, citações, quadros e elementos pré e pós-textuais.</p>
+                <p>Fidelidade às normas técnicas exigidas pela sua universidade, periódico ou evento científico.</p>
               </div>
             </li>
             <li class="commitment-item">
               <span class="commitment-index" aria-hidden="true">03</span>
               <div class="commitment-body">
                 <h3>Revisão ortográfica e padronização textual</h3>
-                <p>Aprimoramos a linguagem acadêmica, a coesão, a concordância e a clareza vocabular, garantindo um texto limpo, formal e padronizado do início ao fim.</p>
+                <p>Refinamento vocabular, coesão e padronização estilística compatíveis com o rigor universitário.</p>
               </div>
             </li>
             <li class="commitment-item">
               <span class="commitment-index" aria-hidden="true">04</span>
               <div class="commitment-body">
                 <h3>Cuidado com as referências e a integridade científica</h3>
-                <p>Valorizamos fontes científicas legítimas, ética na pesquisa e correspondência fiel entre todas as citações do texto e a lista final de referências.</p>
+                <p>Valorização da pesquisa autêntica, com citações e referências conferidas com responsabilidade.</p>
               </div>
             </li>
             <li class="commitment-item">
               <span class="commitment-index" aria-hidden="true">05</span>
               <div class="commitment-body">
                 <h3>Atendimento individualizado, respeitando as necessidades de cada cliente</h3>
-                <p>Cada estudante tem uma rotina, um curso e uma história. Nosso diálogo é próximo, humano e transparente em todas as etapas combinadas.</p>
+                <p>Comunicação humana, transparente e atenta às orientações e etapas combinadas em cada projeto.</p>
               </div>
             </li>
           </ol>
@@ -394,7 +306,7 @@
               <div class="founders-image-wrapper">
                 <img
                   src="assets/fundadores-tej.jpg"
-                  alt="Thiago e Jordana, fundadores da T&J Trabalhos Acadêmicos, vestindo jalecos brancos"
+                  alt="Thiago e Jordana, fundadores da T&J Trabalhos Acadêmicos"
                   class="founders-photo"
                   loading="lazy"
                 />
@@ -402,14 +314,14 @@
               <figcaption class="founders-caption">
                 <div class="founders-names">
                   <strong>Thiago &amp; Jordana — T&amp;J</strong>
-                  <span>Medicina &amp; Odontologia • Unindo amor e paixão pelo conhecimento desde 2024</span>
+                  <span>Amor e paixão pelo conhecimento</span>
                 </div>
                 <span class="year-badge">Desde 2024</span>
               </figcaption>
             </figure>
 
             <div class="story-highlight-card">
-              <img src="assets/logo-tej.jpg" alt="Símbolo T&J Trabalhos Acadêmicos" class="story-mini-logo" width="60" height="60" />
+              <img src="assets/logo-tej.jpg" alt="Logo T&J Trabalhos Acadêmicos" class="story-mini-logo" width="64" height="64" />
               <p>
                 “Acreditamos que por trás de cada trabalho existe alguém com um sonho, um objetivo e uma história. E é por isso que fazemos tudo com dedicação, responsabilidade e carinho.”
               </p>
@@ -459,125 +371,36 @@
       </div>
     </section>
 
-    <!-- SEÇÃO: COMO FUNCIONA & TERMOS E CONDIÇÕES (Transparência Comercial) -->
-    <section class="transparency-section section-spacing" id="transparencia">
-      <div class="container">
-        <div class="section-header" data-reveal="group">
-          <span class="section-kicker">Transparência, Organização e Segurança</span>
-          <h2 class="section-title">Como funciona nossa parceria e condições do serviço</h2>
-          <p class="section-description">
-            Para garantir clareza e organização durante a prestação do serviço, apresentamos de forma transparente todas as etapas e condições aplicáveis à contratação.
-          </p>
-        </div>
-
-        <!-- Linha do tempo das 4 condições oficiais -->
-        <div class="terms-grid" data-reveal="group">
-          <article class="term-card">
-            <div class="term-header">
-              <span class="term-step">1. Forma de pagamento</span>
-              <span class="term-badge">50% + 50%</span>
-            </div>
-            <p>
-              O serviço será iniciado mediante o pagamento de <strong>50% do valor total previamente acordado</strong>. Os <strong>50% restantes deverão ser pagos no momento da entrega do trabalho finalizado e antes da disponibilização dos slides</strong>, quando estes fizerem parte da contratação.
-            </p>
-          </article>
-
-          <article class="term-card">
-            <div class="term-header">
-              <span class="term-step">2. Correções e ajustes incluídos</span>
-              <span class="term-badge">Sem custo extra no escopo</span>
-            </div>
-            <p>
-              O valor contratado contempla as <strong>correções e os ajustes solicitados pelo orientador</strong>, desde que estejam relacionados ao trabalho originalmente contratado e permaneçam dentro da proposta e do escopo inicialmente definidos. Isso inclui, quando aplicável, ajustes de estrutura, adequações metodológicas, correções textuais e alterações de conteúdo.
-            </p>
-          </article>
-
-          <article class="term-card">
-            <div class="term-header">
-              <span class="term-step">3. Alterações fora do escopo</span>
-              <span class="term-badge">Avaliação prévia</span>
-            </div>
-            <p>
-              Solicitações que representem uma mudança substancial no projeto originalmente definido — como <strong>alteração completa do tema, mudança da metodologia, inclusão de novas etapas ou transformação do tipo de trabalho</strong> — serão avaliadas separadamente. Quando houver necessidade de valor adicional, o contratante será informado e a execução somente ocorrerá após sua aprovação.
-            </p>
-          </article>
-
-          <article class="term-card">
-            <div class="term-header">
-              <span class="term-step">4. Compromisso e acompanhamento</span>
-              <span class="term-badge">Até a versão final</span>
-            </div>
-            <p>
-              Nosso compromisso é conduzir o serviço com organização, comunicação e atenção às etapas combinadas, mantendo disponibilidade para os ajustes previstos até a entrega da versão final acordada.
-            </p>
-          </article>
-        </div>
-
-        <!-- Bloco Oficial de Pagamento PIX + Leitura Integral do Termo -->
-        <div class="pix-banner" data-reveal="panel">
-          <div class="pix-info">
-            <span class="pix-label">PAGAMENTO OFICIAL VIA PIX</span>
-            <h3 class="pix-favorecido">Favorecido: Jordana Silva Moreira</h3>
-            <p class="pix-note">
-              Ao realizar o pagamento da primeira parcela, o contratante declara estar de acordo com as condições apresentadas neste documento.
-            </p>
-          </div>
-
-          <div class="pix-actions">
-            <div class="pix-key-box">
-              <span class="pix-key-title">Chave PIX (Telefone):</span>
-              <code class="pix-key-value" id="pixKeyValue">62999715309</code>
-            </div>
-            <div class="pix-buttons">
-              <button type="button" class="btn btn-light" id="copyPixBtn" aria-live="polite">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span id="copyPixText">Copiar Chave PIX</span>
-              </button>
-              <button type="button" class="btn btn-outline-light" id="openTermsModalBtn" aria-haspopup="dialog" aria-controls="termsModal">
-                Ver Termo Completo
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO: ESTRUTURADOR DE ORÇAMENTO ACADÊMICO (Jornada Funcional Completa) -->
+    <!-- SEÇÃO: ATENDIMENTO E CONVERSA SOBRE O PROJETO -->
     <section class="quote-section section-spacing" id="orcamento">
       <div class="container">
         <div class="quote-wrapper">
           <div class="quote-info" data-reveal="group">
             <span class="section-kicker">Atendimento Individualizado</span>
-            <h2 class="section-title">Vamos tirar o seu projeto acadêmico do papel?</h2>
+            <h2 class="section-title">Vamos conversar sobre o seu projeto?</h2>
             <p class="quote-lead">
-              Preencha os detalhes da sua demanda ao lado. O sistema organiza automaticamente o resumo do seu pedido para que possamos te atender com agilidade pelo WhatsApp.
+              Conte-nos brevemente o que você precisa. Na nossa conversa pelo WhatsApp, alinhamos todos os detalhes, prazos e condições de forma personalizada para a sua necessidade.
             </p>
 
             <div class="contact-direct-card">
-              <h3>Contato Direto T&amp;J</h3>
-              <p>Prefere falar diretamente conosco agora mesmo?</p>
-              <ul class="contact-list">
-                <li>
-                  <strong>WhatsApp / Atendimento:</strong>
-                  <a href="https://wa.me/5562999715309" target="_blank" rel="noopener noreferrer">(62) 99971-5309</a>
-                </li>
-                <li>
-                  <strong>Responsáveis:</strong>
-                  <span>Thiago &amp; Jordana</span>
-                </li>
-                <li>
-                  <strong>Atendimento:</strong>
-                  <span>100% online para todo o Brasil</span>
-                </li>
-              </ul>
+              <div class="contact-card-brand">
+                <img src="assets/logo-tej.jpg" alt="Logo T&J" width="56" height="56" />
+                <div>
+                  <h3>T&amp;J Trabalhos Acadêmicos</h3>
+                  <span>Atendimento direto com Thiago &amp; Jordana</span>
+                </div>
+              </div>
+              <a href="https://wa.me/5562999715309" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-full">
+                Chamar diretamente no WhatsApp
+              </a>
             </div>
           </div>
 
           <div class="quote-form-card" data-reveal="panel">
             <form id="academicQuoteForm" class="quote-form" novalidate>
               <div class="form-header">
-                <h3>Estruturar Solicitação de Orçamento</h3>
-                <p>Sem compromisso. Receba nossa avaliação personalizada.</p>
+                <h3>Iniciar conversa</h3>
+                <p>Preencha abaixo para estruturarmos sua mensagem inicial.</p>
               </div>
 
               <div class="form-row">
@@ -588,17 +411,17 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="courseArea">Curso ou área de formação <span class="required-mark" aria-hidden="true">*</span></label>
-                  <input type="text" id="courseArea" name="courseArea" placeholder="Ex.: Enfermagem, Direito, Pedagogia..." required />
+                  <label for="courseArea">Curso ou área <span class="required-mark" aria-hidden="true">*</span></label>
+                  <input type="text" id="courseArea" name="courseArea" placeholder="Ex.: Medicina, Odontologia, Direito..." required />
                   <span class="field-error" id="errorCourse" role="alert"></span>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="serviceType">Tipo de demanda acadêmica <span class="required-mark" aria-hidden="true">*</span></label>
+                  <label for="serviceType">Demanda acadêmica <span class="required-mark" aria-hidden="true">*</span></label>
                   <select id="serviceType" name="serviceType" required>
-                    <option value="">Selecione o serviço desejado...</option>
+                    <option value="">Selecione a demanda...</option>
                     <option value="TCC / Monografia">TCC / Monografia</option>
                     <option value="Projeto de Pesquisa">Projeto de Pesquisa</option>
                     <option value="Artigo Científico">Artigo Científico</option>
@@ -612,53 +435,19 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="normStandard">Norma / Diretriz principal</label>
-                  <select id="normStandard" name="normStandard">
-                    <option value="ABNT">Padrão ABNT</option>
-                    <option value="Diretriz própria da instituição / edital">Manual da Instituição / Edital</option>
-                    <option value="Vancouver">Estilo Vancouver</option>
-                    <option value="APA">Norma APA</option>
-                    <option value="Ainda não sei informar">Ainda não sei informar</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="projectStage">Em qual etapa você está?</label>
-                  <select id="projectStage" name="projectStage">
-                    <option value="Iniciando do zero (tenho a ideia/tema)">Iniciando do zero (tenho a ideia/tema)</option>
-                    <option value="Em andamento (preciso de desenvolvimento/organização)">Em andamento (desenvolvimento/organização)</option>
-                    <option value="Rascunho pronto (preciso de formatação/revisão)">Texto pronto (formatação/revisão/slides)</option>
-                    <option value="Ajustes solicitados pelo orientador">Ajustes solicitados pelo orientador</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="deadlineInfo">Prazo estimado de entrega</label>
-                  <input type="text" id="deadlineInfo" name="deadlineInfo" placeholder="Ex.: Final deste mês / 15 dias" />
+                  <label for="deadlineInfo">Prazo ou etapa atual</label>
+                  <input type="text" id="deadlineInfo" name="deadlineInfo" placeholder="Ex.: Iniciando agora / Entrega no próximo mês" />
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="projectDetails">Tema ou observações sobre o projeto</label>
-                <textarea id="projectDetails" name="projectDetails" rows="3" placeholder="Conte brevemente sobre o seu tema, número aproximado de páginas ou necessidades específicas..."></textarea>
-              </div>
-
-              <!-- Preview em tempo real da mensagem gerada -->
-              <div class="message-preview-box" aria-live="polite">
-                <div class="preview-header">
-                  <span>Resumo pronto para envio:</span>
-                  <button type="button" class="btn-text-copy" id="copySummaryBtn">Copiar resumo</button>
-                </div>
-                <p id="liveMessagePreview" class="preview-content">
-                  Olá, equipe T&amp;J! Gostaria de solicitar um orçamento para um trabalho acadêmico.
-                </p>
+                <label for="projectDetails">Sobre o seu projeto (opcional)</label>
+                <textarea id="projectDetails" name="projectDetails" rows="3" placeholder="Conte brevemente sobre a sua ideia, tema ou necessidade..."></textarea>
               </div>
 
               <div class="form-submit-row">
                 <button type="submit" class="btn btn-primary btn-full">
-                  <span>Enviar Pedido pelo WhatsApp</span>
+                  <span>Continuar no WhatsApp</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                 </button>
               </div>
@@ -669,12 +458,12 @@
     </section>
   </main>
 
-  <!-- Rodapé Institucional -->
+  <!-- Rodapé Minimalista -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
         <div class="footer-logo-row">
-          <img src="assets/logo-tej.jpg" alt="Logo T&J Trabalhos Acadêmicos" width="48" height="48" class="footer-logo" />
+          <img src="assets/logo-tej.jpg" alt="Logo T&J Trabalhos Acadêmicos" width="60" height="60" class="footer-logo" />
           <div>
             <strong>T&amp;J Trabalhos Acadêmicos</strong>
             <span>Organização, conhecimento e cuidado em cada projeto.</span>
@@ -688,24 +477,12 @@
       <div class="footer-links">
         <h3>Navegação</h3>
         <ul>
+          <li><a href="#topo">Início</a></li>
           <li><a href="#servicos">Demandas Acadêmicas</a></li>
           <li><a href="#compromisso">Nosso Compromisso</a></li>
           <li><a href="#historia">Nossa História</a></li>
-          <li><a href="#transparencia">Termos e Condições</a></li>
-          <li><a href="#orcamento">Solicitar Orçamento</a></li>
+          <li><a href="#orcamento">Falar Conosco</a></li>
         </ul>
-      </div>
-
-      <div class="footer-contact">
-        <h3>Atendimento &amp; Dados</h3>
-        <ul>
-          <li><strong>Responsáveis:</strong> Thiago &amp; Jordana</li>
-          <li><strong>Favorecido PIX:</strong> Jordana Silva Moreira</li>
-          <li><strong>WhatsApp / PIX:</strong> (62) 99971-5309</li>
-        </ul>
-        <button type="button" class="btn btn-secondary btn-sm footer-terms-btn" id="footerTermsBtn">
-          Ler Termos e Condições do Serviço
-        </button>
       </div>
     </div>
 
@@ -714,76 +491,6 @@
       <p class="footer-signature">Seja bem-vindo à nossa história! Será um prazer fazer parte da sua.</p>
     </div>
   </footer>
-
-  <!-- MODAL ACESSÍVEL: TERMOS E CONDIÇÕES DO SERVIÇO NA ÍNTEGRA -->
-  <div class="modal-backdrop" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle" hidden>
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <div class="modal-brand">
-          <img src="assets/logo-tej.jpg" alt="" width="40" height="40" />
-          <div>
-            <h2 id="termsModalTitle">Termos e Condições do Serviço</h2>
-            <p>Transparência, organização e segurança em cada etapa do seu projeto acadêmico.</p>
-          </div>
-        </div>
-        <button type="button" class="modal-close-btn" id="closeTermsModalBtn" aria-label="Fechar janela de termos">
-          ✕
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <div class="modal-callout">
-          <strong>Olá!</strong> Para garantir clareza e organização durante a prestação do serviço, apresentamos abaixo as condições aplicáveis à contratação. Ao efetuar a primeira parcela, o contratante confirma ciência e concordância com estes termos.
-        </div>
-
-        <div class="modal-section">
-          <h3>1. Forma de pagamento</h3>
-          <p>
-            O serviço será iniciado mediante o pagamento de <strong>50% do valor total previamente acordado</strong>. Os <strong>50% restantes deverão ser pagos no momento da entrega do trabalho finalizado e antes da disponibilização dos slides</strong>, quando estes fizerem parte da contratação.
-          </p>
-        </div>
-
-        <div class="modal-section">
-          <h3>2. Correções e ajustes incluídos</h3>
-          <p>
-            O valor contratado contempla as <strong>correções e os ajustes solicitados pelo orientador</strong>, desde que estejam relacionados ao trabalho originalmente contratado e permaneçam dentro da proposta e do escopo inicialmente definidos. Isso inclui, quando aplicável, ajustes de estrutura, adequações metodológicas, correções textuais e alterações de conteúdo.
-          </p>
-        </div>
-
-        <div class="modal-section">
-          <h3>3. Alterações fora do escopo</h3>
-          <p>
-            Solicitações que representem uma mudança substancial no projeto originalmente definido — como <strong>alteração completa do tema, mudança da metodologia, inclusão de novas etapas ou transformação do tipo de trabalho</strong> — serão avaliadas separadamente. Quando houver necessidade de valor adicional, o contratante será informado e a execução somente ocorrerá após sua aprovação.
-          </p>
-        </div>
-
-        <div class="modal-section">
-          <h3>4. Compromisso e acompanhamento</h3>
-          <p>
-            Nosso compromisso é conduzir o serviço com organização, comunicação e atenção às etapas combinadas, mantendo disponibilidade para os ajustes previstos até a entrega da versão final acordada.
-          </p>
-        </div>
-
-        <div class="modal-pix-card">
-          <div>
-            <strong>PAGAMENTO VIA PIX</strong>
-            <p>Favorecido: Jordana Silva Moreira</p>
-            <p>Chave PIX: <code>62999715309</code></p>
-          </div>
-          <button type="button" class="btn btn-light btn-sm" id="modalCopyPixBtn">Copiar PIX</button>
-        </div>
-
-        <div class="modal-agreement-box">
-          AO REALIZAR O PAGAMENTO DA PRIMEIRA PARCELA, O CONTRATANTE DECLARA ESTAR DE ACORDO COM AS CONDIÇÕES APRESENTADAS NESTE DOCUMENTO.
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <span>T&amp;J Trabalhos Acadêmicos • Organização, conhecimento e cuidado em cada projeto.</span>
-        <button type="button" class="btn btn-primary btn-sm" id="acceptTermsBtn">Entendi e fechar</button>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
